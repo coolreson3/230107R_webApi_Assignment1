@@ -29,3 +29,18 @@ console.log("\n");
 // Check appointments after cancellation
 console.log("=== All Appointments After Cancellation ===");
 console.log(scheduler.getAppointmentsByPatient("Bob"));
+console.log("\n");
+
+// Check Doctor Availability
+console.log("=== Checking Availability (Dr. John Smith on 2025-05-10 at 10:00 AM) ===");
+console.log(scheduler.isDoctorAvailable(1, "2025-05-10", "10:00 AM"));
+console.log("=== Checking Availability (Dr. Emma Brown on 2025-05-12 at 11:00 AM) ===");
+console.log(scheduler.isDoctorAvailable(3, "2025-05-12", "11:00 AM"));
+console.log("\n");
+
+// Reschedule Appointment
+console.log("=== Rescheduling Appointment ID 1 to 2025-05-12 at 3:00 PM ===");
+console.log(scheduler.rescheduleAppointment(1, "2025-05-12", "3:00 PM"));
+console.log("=== Updated Alice's Appointments ===");
+console.log(scheduler.getAppointmentsByPatient("Alice"));
+console.log("\n");

@@ -17,13 +17,15 @@
 
 ## 📝 Project Description <a id="project-description"></a>
 
-This Node.js module simulates a simple appointment scheduling system for a clinic. It allows users to:
+This Node.js module simulates a simple appointment scheduling system for a clinic. It allows patients/admins to:
 
-- View available doctors.
-- Book an appointment with a doctor.
-- View a patient’s appointments.
-- View a doctor’s schedule.
-- Cancel appointments.
+- View available doctors. 
+- Book an appointment with a doctor. 
+- View a patient’s appointments. 
+- View a doctor’s schedule. (Admin feature)
+- Cancel appointments. 
+- Check doctor availability. 
+- Reschedule existing appointments. 
 
 All data is stored in-memory — no external database is used.
 
@@ -47,15 +49,16 @@ All data is stored in-memory — no external database is used.
 3. **Clone this repository** by entering the following command into the terminal:
 
    ```bash
-   git clone https://github.com/coolreson3/230107R_webApi_Assignment1.git
+   git clone https://github.com/coolreson3/230107R_webApi_Assignment1.git 
+   ```
 
 4. **After cloning finishes, move into the project directory** by entering the following command:
 
    ```bash
    cd 230107R_webApi_Assignment1  # (may be different depending on the terminal's directory)
+   ```
 
-
-4. **Run** the demonstration script:
+5. **Run** the demonstration script:
 
    ```bash
    node test.js
@@ -188,6 +191,30 @@ scheduler.cancelAppointment(2);
 'Cancelled appointment with Dr. Sarah Lee for Bob.'
 ```
 
+### `isDoctorAvailable(doctorId, date, time)`
+
+```js
+scheduler.isDoctorAvailable(1, "2025-05-10", "10:00 AM");
+```
+
+**Output:**
+
+```js
+false
+```
+
+### `rescheduleAppointment(appointmentId, newDate, newTime)`
+
+```js
+scheduler.rescheduleAppointment(1, "2025-05-12", "3:00 PM");
+```
+
+**Output:**
+
+```js
+'Rescheduled appointment for Alice to 2025-05-12 at 3:00 PM.'
+```
+
 ---
 
 ## 📊 Example Data <a id="example-data"></a>
@@ -240,6 +267,20 @@ console.log("\n");
 // Check appointments after cancellation
 console.log("=== All Appointments After Cancellation ===");
 console.log(scheduler.getAppointmentsByPatient("Bob"));
+
+// Check Doctor Availability
+console.log("=== Checking Availability (Dr. John Smith on 2025-05-10 at 10:00 AM) ===");
+console.log(scheduler.isDoctorAvailable(1, "2025-05-10", "10:00 AM"));
+console.log("=== Checking Availability (Dr. Emma Brown on 2025-05-12 at 11:00 AM) ===");
+console.log(scheduler.isDoctorAvailable(3, "2025-05-12", "11:00 AM"));
+console.log("\n");
+
+// Reschedule Appointment
+console.log("=== Rescheduling Appointment ID 1 to 2025-05-12 at 3:00 PM ===");
+console.log(scheduler.rescheduleAppointment(1, "2025-05-12", "3:00 PM"));
+console.log("=== Updated Alice's Appointments ===");
+console.log(scheduler.getAppointmentsByPatient("Alice"));
+console.log("\n");
 ```
 
 **Output:**
@@ -283,8 +324,28 @@ console.log(scheduler.getAppointmentsByPatient("Bob"));
 === Canceling Appointment ID 2 ===
 'Cancelled appointment with Dr. Sarah Lee for Bob.'
 
-=== All Appointments After Cancellation ===
+=== All Appointments for Bob After Cancellation ===
 []
+
+=== Checking Availability (Dr. John Smith on 2025-05-10 at 10:00 AM) ===
+false
+=== Checking Availability (Dr. Emma Brown on 2025-05-12 at 11:00 AM) ===
+true
+
+=== Rescheduling Appointment ID 1 to 2025-05-12 at 3:00 PM ===
+Appointment rescheduled to 2025-05-12 at 3:00 PM.
+
+=== Updated Alice's Appointments ===
+[
+  {
+    id: 1,
+    patientName: 'Alice',
+    doctorId: 1,
+    doctorName: 'Dr. John Smith',
+    date: '2025-05-12',
+    time: '3:00 PM'
+  }
+]
 ```
 
 ---

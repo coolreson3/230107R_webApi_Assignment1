@@ -1,6 +1,18 @@
 /**
- * appointmentScheduler.js
- * Healthcare appointment scheduling module with dummy in-memory data.
+ * healthcareManagementSystem.js
+ * A module for managing healthcare services including appointment scheduling,
+ * doctor information, and insurance verification, using in-memory dummy data.
+ *
+ * Provides functionality to:
+ * - Book, cancel, and reschedule appointments
+ * - Query appointments by patient or doctor
+ * - List and filter doctors by specialty, language, illness, gender, and visit mode
+ * - Retrieve doctor reviews and ratings
+ * - Check doctor insurance acceptance
+ *
+ * @author Koh Zi Jie
+ * @version 1.0.0
+ * @created 2025-05-22
  */
 
 // In-memory storage for appointments.

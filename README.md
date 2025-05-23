@@ -18,7 +18,7 @@
 
 ## 📝 Project Description <a id="project-description"></a>
 
-This Node.js module simulates a simple appointment scheduling system for a clinic. It allows patients/admins to:
+This Node.js module simulates a simple healthcare management system for a clinic. It allows patients/admins to:
 
 - View available doctors.
 - Filter doctors based on specialty, gender, language, mode of visit, or illness treated etc.
